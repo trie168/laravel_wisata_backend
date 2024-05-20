@@ -1,7 +1,7 @@
 <div class="main-sidebar sidebar-style-2">
     <aside id="sidebar-wrapper">
         <div class="sidebar-brand">
-            <a href="index.html">Stisla</a>
+            <a href="index.html">Wisata Tri</a>
         </div>
         <div class="sidebar-brand sidebar-brand-sm">
             <a href="index.html">St</a>
@@ -12,6 +12,6 @@
                 <a href="#"><i class="fas fa-fire"></i><span>Dashboard</span></a>
             </li>
 
-            
+
     </aside>
 </div>
