@@ -19,7 +19,7 @@
             <form method="POST"
                 action="{{ route('login') }}"
                 class="needs-validation"
-                novalidate="">
+                novalidate=""> @csrf
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input id="email"
