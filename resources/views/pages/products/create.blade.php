@@ -147,12 +147,12 @@
                                 <label class="form-label">Is Favorite</label>
                                 <div class="selectgroup selectgroup-pills">
                                     <label class="selectgroup-item">
-                                        <input type="radio" name="favorite" value="1" class="selectgroup-input"
+                                        <input type="radio" name="favourite" value="1" class="selectgroup-input"
                                             checked="">
                                         <span class="selectgroup-button">Yes</span>
                                     </label>
                                     <label class="selectgroup-item">
-                                        <input type="radio" name="favorite" value="0" class="selectgroup-input">
+                                        <input type="radio" name="favourite" value="0" class="selectgroup-input">
                                         <span class="selectgroup-button">No</span>
                                     </label>
                                 </div>

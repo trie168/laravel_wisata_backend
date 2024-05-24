@@ -135,14 +135,14 @@
                                 <label class="form-label w-100">Criteria</label>
                                 <div class="selectgroup selectgroup-pills">
                                     <label class="selectgroup-item">
-                                        <input type="radio" name="criteria" value="perorangan" class="selectgroup-input"
-                                            {{ $product->criteria == 'perorangan' ? 'checked' : '' }}>
-                                        <span class="selectgroup-button">Perorangan</span>
+                                        <input type="radio" name="criteria" value="individual" class="selectgroup-input"
+                                            {{ $product->criteria == 'individual' ? 'checked' : '' }}>
+                                        <span class="selectgroup-button">Individual</span>
                                     </label>
                                     <label class="selectgroup-item">
-                                        <input type="radio" name="criteria" value="rombongan" class="selectgroup-input"
-                                            {{ $product->criteria == 'rombongan' ? 'checked' : '' }}>
-                                        <span class="selectgroup-button">Rombongan</span>
+                                        <input type="radio" name="criteria" value="group" class="selectgroup-input"
+                                            {{ $product->criteria == 'group' ? 'checked' : '' }}>
+                                        <span class="selectgroup-button">Group</span>
                                     </label>
                                 </div>
                             </div>
@@ -153,12 +153,12 @@
                                 <label class="form-label w-100">Is Favorite</label>
                                 <div class="selectgroup selectgroup-pills">
                                     <label class="selectgroup-item">
-                                        <input type="radio" name="favorite" value="1" class="selectgroup-input"
+                                        <input type="radio" name="favourite" value="1" class="selectgroup-input"
                                             {{ $product->favorite == 1 ? 'checked' : '' }}>
                                         <span class="selectgroup-button">Yes</span>
                                     </label>
                                     <label class="selectgroup-item">
-                                        <input type="radio" name="favorite" value="0" class="selectgroup-input"
+                                        <input type="radio" name="favourite" value="0" class="selectgroup-input"
                                             {{ $product->favorite == 0 ? 'checked' : '' }}>
                                         <span class="selectgroup-button">No</span>
                                     </label>
