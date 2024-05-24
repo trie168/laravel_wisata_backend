@@ -22,7 +22,7 @@ class ProductFactory extends Factory
             'description' => fake()->sentence(),
             'price' => fake()->randomFloat(2, 1, 1000),
             'stock' => fake()->numberBetween(1, 100),
-            'image' => fake()->imageUrl(),
+            'image' => fake()->imageUrl(640, 480, 'tours', true),
             'category_id' => Category::factory(),
             'status' => 'published',
             'criteria' => 'individual',
