@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Category;
+use App\Models\Product;
 
 class DatabaseSeeder extends Seeder
 {
@@ -25,5 +26,7 @@ class DatabaseSeeder extends Seeder
 
         // category factory 2
         Category::factory(2)->create();
+        // product factory 100
+        Product::factory(100)->create();
     }
 }
