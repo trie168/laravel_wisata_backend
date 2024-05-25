@@ -29,7 +29,7 @@ class ProductController extends Controller
             'description' => 'required|string',
             'price' => 'required|numeric',
             'stock' => 'required|numeric',
-            'image' => 'required|string',
+            'image' => 'required|max:1024',
             'category_id' => 'required|numeric',
             'status' => 'required|string',
             'criteria' => 'required|string',
@@ -45,15 +45,17 @@ class ProductController extends Controller
         $product->status = $request->status;
         $product->criteria = $request->criteria;
         $product->favourite = $request->favourite;
+        $product->save();
 
         // upload image
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $image->storeAs('public/products', $product->id . '.' . $image->extension());
             $product->image = '/products/' . $product->id . '.' . $image->extension();
+            $product->save();
         }
 
-        $product->save();
+
 
         return response()->json([
             'status' => 'success',

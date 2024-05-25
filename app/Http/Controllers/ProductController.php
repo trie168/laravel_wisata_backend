@@ -32,7 +32,7 @@ class ProductController extends Controller
             'description' => 'required',
             'price' => 'required',
             'stock' => 'required',
-            'image' => 'required',
+            'image' => 'required|max:1024',
             'category_id' => 'required',
             'status' => 'required',
             'criteria' => 'required',
@@ -49,11 +49,14 @@ class ProductController extends Controller
         $product->criteria = $request->criteria;
         $product->favourite = $request->favourite;
         $product->save();
+
         //image
-        $image = $request->file('image');
-        $image->storeAs('public/products', $product->id . '.' . $image->extension());
-        $product->image = '/products' . $product->id . '.' . $image->extension();
-        $product->save();
+        if($request->hasFile('image')){
+            $image = $request->file('image');
+            $image->storeAs('public/products', $product->id . '.' . $image->extension());
+            $product->image = '/products' . $product->id . '.' . $image->extension();
+            $product->save();
+        }
 
         return redirect()->route('products.index')->with('success', 'Product created successfully.');
     }
@@ -89,8 +92,9 @@ class ProductController extends Controller
         $product->favourite = $request->favourite;
         $product->save();
 
-        if($request->hasFile('image')){
-            $image = $request->file('image');
+        //update image
+        $image = $request->file('image');
+        if (isset($image)){
             $image->storeAs('public/products', $product->id . '.' . $image->extension());
             $product->image = '/products' . $product->id . '.' . $image->extension();
             $product->save();

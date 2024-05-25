@@ -154,12 +154,12 @@
                                 <div class="selectgroup selectgroup-pills">
                                     <label class="selectgroup-item">
                                         <input type="radio" name="favourite" value="1" class="selectgroup-input"
-                                            {{ $product->favorite == 1 ? 'checked' : '' }}>
+                                            {{ $product->favourite == 1 ? 'checked' : '' }}>
                                         <span class="selectgroup-button">Yes</span>
                                     </label>
                                     <label class="selectgroup-item">
                                         <input type="radio" name="favourite" value="0" class="selectgroup-input"
-                                            {{ $product->favorite == 0 ? 'checked' : '' }}>
+                                            {{ $product->favourite == 0 ? 'checked' : '' }}>
                                         <span class="selectgroup-button">No</span>
                                     </label>
                                 </div>
