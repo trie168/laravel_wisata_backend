@@ -16,7 +16,7 @@ class ProductController extends Controller
         })->orderBy('favourite', 'desc')->get();
         return response()->json([
             'status' => 'success',
-            'data' => $products,
+            'products' => $products,
             'message' => 'Data retrieved successfully.'
         ], 200);
     }
@@ -59,7 +59,7 @@ class ProductController extends Controller
 
         return response()->json([
             'status' => 'success',
-            'data' => $product,
+            'product' => $product,
             'message' => 'Data created successfully.'
         ], 201);
     }
@@ -76,7 +76,7 @@ class ProductController extends Controller
         }
         return response()->json([
             'status' => 'success',
-            'data' => $product,
+            'product' => $product,
             'message' => 'Data retrieved successfully.'
         ], 200);
     }
@@ -100,19 +100,29 @@ class ProductController extends Controller
         $product->status = $request->status;
         $product->criteria = $request->criteria;
         $product->favourite = $request->favourite;
+        $product->save();
 
-        // upload image
-        if ($request->hasFile('image')) {
+        //update image
+        if($request->hasFile('image')){
+
+            //delete old image
+            $destination = 'public' . $product->image;
+            if(file_exists($destination)){
+                unlink($destination);
+            }
+
+            //upload new image
             $image = $request->file('image');
             $image->storeAs('public/products', $product->id . '.' . $image->extension());
-            $product->image = '/products/' . $product->id . '.' . $image->extension();
+            $product->image = '/products' . $product->id . '.' . $image->extension();
+            $product->save();
         }
 
-        $product->save();
+
 
         return response()->json([
             'status' => 'success',
-            'data' => $product,
+            'product' => $product,
             'message' => 'Data updated successfully.'
         ], 200);
     }

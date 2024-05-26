@@ -21,7 +21,7 @@ class AuthController extends Controller
 
         if (!$user || !Hash::check($request->password, $user->password)) {
             return response([
-                'status' => 'error',
+                'status' => 'failed',
                 'message' => 'These credentials do not match our records.'
             ], 404);
         }

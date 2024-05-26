@@ -9,12 +9,12 @@ use App\Models\Category;
 class CategoryController extends Controller
 {
     //index
-    public function index(Request $request)
+    public function index()
     {
         $categories = Category::orderBy('name', 'asc')->get();
         return response()->json([
             'status' => 'success',
-            'data' => $categories,
+            'categories' => $categories,
             'message' => 'Data retrieved successfully.'
         ], 200);
     }

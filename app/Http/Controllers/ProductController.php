@@ -93,8 +93,16 @@ class ProductController extends Controller
         $product->save();
 
         //update image
-        $image = $request->file('image');
-        if (isset($image)){
+        if($request->hasFile('image')){
+
+            //delete old image
+            $destination = 'public' . $product->image;
+            if(file_exists($destination)){
+                unlink($destination);
+            }
+
+            //upload new image
+            $image = $request->file('image');
             $image->storeAs('public/products', $product->id . '.' . $image->extension());
             $product->image = '/products' . $product->id . '.' . $image->extension();
             $product->save();
