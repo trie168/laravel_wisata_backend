@@ -86,6 +86,6 @@
 
 @push('scripts')
     <!-- JS Libraies -->
-    <script src='https://www.google.com/recaptcha/api.js'></script>
+
     <!-- Page Specific JS File -->
 @endpush
