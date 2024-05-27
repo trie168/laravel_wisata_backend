@@ -29,14 +29,21 @@ class ProductController extends Controller
             'description' => 'required|string',
             'price' => 'required|numeric',
             'stock' => 'required|numeric',
-            'image' => 'required|max:1024',
+         //   'image' => 'image|file|max:1024',
             'category_id' => 'required|numeric',
             'status' => 'required|string',
             'criteria' => 'required|string',
             'favourite' => 'required|numeric',
         ]);
 
-        $product = new Product();
+        // check if product already exists
+        $product = Product::find($request->id);
+        $status = 200; $message = 'Data updated successfully.';
+        if(!$product) {
+            $product = new Product();
+            $status = 201; $message = 'Data created successfully.';
+        }
+
         $product->name = $request->name;
         $product->description = $request->description;
         $product->price = $request->price;
@@ -55,19 +62,17 @@ class ProductController extends Controller
             $product->save();
         }
 
-
-
         return response()->json([
             'status' => 'success',
             'product' => $product,
-            'message' => 'Data created successfully.'
-        ], 201);
+            'message' => $message
+        ], $status);
     }
 
     //show
-    public function show(Product $product)
+    public function show($id)
     {
-        $product = Product::find($product->id);
+        $product = Product::find($id);
         if (!$product) {
             return response()->json([
                 'status' => 'error',
@@ -82,9 +87,22 @@ class ProductController extends Controller
     }
 
     //update
-    public function update(Request $request, Product $product)
+    public function update(Request $request)
     {
-        $product = Product::find($product->id);
+
+        $request->validate([
+            'name' => 'required|string',
+            'description' => 'required|string',
+            'price' => 'required|numeric',
+            'stock' => 'required|numeric',
+            'image' => 'image|file|max:1024',
+            'category_id' => 'required|numeric',
+            'status' => 'required|string',
+            'criteria' => 'required|string',
+            'favourite' => 'required|numeric',
+        ]);
+
+        $product = Product::find($request->id);
         if (!$product) {
             return response()->json([
                 'status' => 'error',
@@ -100,7 +118,6 @@ class ProductController extends Controller
         $product->status = $request->status;
         $product->criteria = $request->criteria;
         $product->favourite = $request->favourite;
-        $product->save();
 
         //update image
         if($request->hasFile('image')){
@@ -115,11 +132,10 @@ class ProductController extends Controller
             $image = $request->file('image');
             $image->storeAs('public/products', $product->id . '.' . $image->extension());
             $product->image = '/products' . $product->id . '.' . $image->extension();
-            $product->save();
+
         }
 
-
-
+        $product->save();
         return response()->json([
             'status' => 'success',
             'product' => $product,
@@ -128,9 +144,9 @@ class ProductController extends Controller
     }
 
     //destroy
-    public function destroy(Product $product)
+    public function destroy($id)
     {
-        $product = Product::find($product->id);
+        $product = Product::find($id);
         if (!$product) {
             return response()->json([
                 'status' => 'error',
