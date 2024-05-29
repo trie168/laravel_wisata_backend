@@ -9,6 +9,8 @@ Route::get('/', function () {
     return view('pages.auth.login');
 });
 
+Route::get('/refresh-captcha', [UserController::class, 'refreshCaptcha']);
+
 Route::middleware(['auth'])->group(function () {
     Route::get('/home', function () {
         return view('pages.dashboard');

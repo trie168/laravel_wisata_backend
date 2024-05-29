@@ -56,7 +56,27 @@
                     </div>
                 </div>
 
+                <div class="form-group mt-4 mb-4">
+                    <div class="captcha">
+                        <span>{!! captcha_img('math') !!}</span>
+                        <button type="button" class="btn btn-primary" class="refresh" id="refresh">
+                            &#x21bb;
+                        </button>
+                    </div>
+                </div>
 
+                <div class="form-group">
+                    <label for="captcha">Captcha</label>
+                    <input id="captcha"
+                        type="text"
+                        class="form-control"
+                        name="captcha"
+                        tabindex="3"
+                        required>
+                    <div class="invalid-feedback">
+                        Please fill in your captcha
+                    </div>
+                </div>
 
                 <div class="form-group">
                     <button type="submit"
@@ -80,4 +100,15 @@
     <!-- JS Libraies -->
 
     <!-- Page Specific JS File -->
+    <script type="text/javascript">
+        $('#refresh').click(function () {
+            $.ajax({
+                type: 'GET',
+                url: 'refresh-captcha',
+                success: function (data) {
+                    $(".captcha span").html(data.captcha);
+                }
+            });
+        });
+    </script>
 @endpush
