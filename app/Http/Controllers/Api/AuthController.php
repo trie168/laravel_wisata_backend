@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
-use App\Rules\Recaptcha;
 
 class AuthController extends Controller
 {
@@ -16,7 +15,6 @@ class AuthController extends Controller
         $request->validate([
             'email' => 'required|email',
             'password' => 'required|string',
-            'g-recaptcha-response' => ['required', new ReCaptcha]
         ]);
 
         $user = User::where('email', $request->email)->first();
