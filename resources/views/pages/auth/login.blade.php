@@ -56,17 +56,16 @@
                     </div>
                 </div>
 
-                <div class="form-group mt-4 mb-4">
+
+
+                <div class="form-group">
+                    <label for="captcha">Captcha</label>
                     <div class="captcha">
                         <span>{!! captcha_img('math') !!}</span>
                         <button type="button" class="btn btn-primary" class="refresh" id="refresh">
                             &#x21bb;
                         </button>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="captcha">Captcha</label>
+                    </div> <br>
                     <input id="captcha"
                         type="text"
                         class="form-control"
