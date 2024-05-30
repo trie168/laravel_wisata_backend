@@ -36,6 +36,15 @@
 
         gtag('config', 'UA-94034622-3');
     </script>
+    <style>
+        body {
+            background-color    : #777 !important;
+            background-image    : url('https://source.unsplash.com/random/featured/?nature') !important;
+            background-position : center;
+            background-repeat   : no-repeat;
+            background-size     : cover;
+        }
+   </style>
     <!-- END GA -->
 </head>
 
