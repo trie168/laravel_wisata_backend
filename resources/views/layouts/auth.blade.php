@@ -32,8 +32,14 @@
     </script>
     <style>
         body {
-            background-color: #777 !important;
-            background-image: url('https://source.unsplash.com/random/featured/?travel') !important;
+            /* background-color: #777 !important;
+            background-image: url('https://source.unsplash.com/random/featured/?travel') !important; */
+            /*
+            * Created with https://www.css-gradient.com
+            * Gradient link: https://www.css-gradient.com/?c1=b71cea&c2=fbb19e&gt=r&gd=dtl
+            */
+            background: rgba(183, 28, 234, 1.0);
+            background: radial-gradient(at left top, rgba(183, 28, 234, 1.0), rgba(251, 177, 158, 1.0));
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
